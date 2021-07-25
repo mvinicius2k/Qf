@@ -1,0 +1,12 @@
+# Ignore everything:
+*.*
+Library
+obj
+
+!Assets/**/*.cs
+!*.cs
+!*.csproj
+!*.sln
+!.gitignore
+
+
