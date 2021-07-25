@@ -44,7 +44,11 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody rb;
     private PhysicMaterial oldFeetColliderMaterial;
     private Collider[] whatIsGround;
+    private TrackChangerState trackChangerState;
+    private TrackChanger trackChanger;
+    private HitKind hitting;
     private Animator anim;
+    private PlayerAnimation playerAnimation;
 
     private bool isGrounded, isJumping;
     private float xInput;
@@ -54,10 +58,6 @@ public class PlayerMovementController : MonoBehaviour
     private bool isOnChangeTrack;
     private bool isChangingToEndTrack, isChangingToStartTrack;
     private int trackChangerLerpCount;
-    private TrackChangerState trackChangerState;
-    private TrackChanger trackChanger;
-    private PlayerAnimation playerAnimation;
-    private HitKind hitting;
     private bool sliding;
 
     public bool IsRunning
@@ -465,8 +465,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (hitFront && hitBack) //Considera o ray menos baixo
         {
-            slope = backSlope;
-            Debug.DrawRay(raycastBack.point, raycastBack.normal, Color.red);
+            
 
             if (raycastFront.point.y > raycastBack.point.y)
             {

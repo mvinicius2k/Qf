@@ -59,6 +59,8 @@ public class TrackChanger : MonoBehaviour
     public Direction2D startDirection = Direction2D.Right;
     public Direction2D endDirection = Direction2D.Left;
     public float checkSize = 0.5f;
+    public Renderer masterRender;
+    public Collider masterCollider;
 
     [SerializeField]
     private Track endTrack;
@@ -68,7 +70,6 @@ public class TrackChanger : MonoBehaviour
 
     private GameObject endTrackObj, startTrackObj;
     private BoxCollider endTrackBc, startTrackBc;
-    private Renderer rend;
 
     [SerializeField]
     private Vector3 _size = Vector3.one;
@@ -79,8 +80,7 @@ public class TrackChanger : MonoBehaviour
 
     private Vector3? colliderPos;
     private bool colliderResult;
-
-
+    private bool masterColliderInit;
 
     public Track GetEndTrack()
     {
@@ -136,23 +136,44 @@ public class TrackChanger : MonoBehaviour
     void Start()
     {
 
-        if (rend == null)
-        {
-            rend = GetComponent<Renderer>();
-        }
-        //SharedInit();
+        
+        SharedInit();
 
     }
 
     
 
-    private void SharedInit()
+    private void SharedInit(bool renderOnly = true)
     {
-        if (rend == null)
+        if (masterRender == null)
         {
-            rend = GetComponent<Renderer>();
+
+            if (!TryGetComponent(out masterRender))
+            {
+                Debug.LogWarning("Não foi possível obter o render do objeto, referencie-o.");
+            }
         }
-        if(endTrackObj == null) // Obtem ou cria os objetos
+
+        if (renderOnly)
+            return;
+
+        if(masterCollider == null)
+        {
+            MeshCollider meshcollider;
+            if(TryGetComponent(out meshcollider))
+            {
+                masterCollider = meshcollider;
+                masterCollider.tag = Constants.ChangeTrackFloorTag;
+                masterColliderInit = true;
+            } 
+            else
+            {
+                Debug.LogWarning("Referencie o collider do objeto");
+            }
+            
+        }
+
+        if (endTrackObj == null) // Obtem ou cria os objetos
         {
 
             var childEnd = gameObject.transform.Find(EndTrackObjName);
@@ -160,7 +181,7 @@ public class TrackChanger : MonoBehaviour
             if(childEnd == null)
             {
                 endTrackObj = new GameObject(EndTrackObjName);
-                endTrackObj.layer = LayerMask.NameToLayer(Constants.MovimentationLayer);
+                endTrackObj.layer = LayerMask.NameToLayer(Constants.TriggersLayer);
                 endTrackObj.AddComponent<BoxCollider>();
                 endTrackObj.transform.parent = gameObject.transform;
                 endTrackObj.transform.localPosition = Vector3.zero;
@@ -182,7 +203,7 @@ public class TrackChanger : MonoBehaviour
             {
                 startTrackObj = new GameObject(StartTrackObjName);
                 
-                startTrackObj.layer = LayerMask.NameToLayer(Constants.MovimentationLayer);
+                startTrackObj.layer = LayerMask.NameToLayer(Constants.TriggersLayer);
                 startTrackObj.AddComponent<BoxCollider>();
                 startTrackObj.transform.parent = gameObject.transform;
                 startTrackObj.transform.localPosition = Vector3.zero;
@@ -206,9 +227,12 @@ public class TrackChanger : MonoBehaviour
     private void OnValidate()
     {
         
-            SharedInit();
+            SharedInit(false);
 
-
+        if (!masterColliderInit && masterCollider != null)
+        {
+            masterCollider.tag = Constants.ChangeTrackFloorTag;
+        }
 
             if (endTrackBc != null)
             {
@@ -253,7 +277,7 @@ public class TrackChanger : MonoBehaviour
         }
 
         var ray = new Ray(position, travelVector);
-        var col = Physics.Raycast(ray, out info, checkSize, LayerMask.GetMask(Constants.MovimentationLayer));
+        var col = Physics.Raycast(ray, out info, checkSize, LayerMask.GetMask(Constants.TriggersLayer));
         if (col)
         {
             Debug.DrawLine(position, info.point);
@@ -289,7 +313,10 @@ public class TrackChanger : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        CustomGizmos.DrawPlaneArrow(rend.bounds.center, travelAngleToEnd, gsize, this.Y);
+        if (masterRender == null)
+            return;
+
+        CustomGizmos.DrawPlaneArrow(masterRender.bounds.center, travelAngleToEnd, gsize, this.Y);
 
         if (!colliderResult)
         {
@@ -325,7 +352,7 @@ public class TrackChanger : MonoBehaviour
             Gizmos.DrawCube(pos, size);
             Gizmos.DrawWireCube(pos, size);
             Gizmos.color = Color.red;
-            CustomGizmos.DrawPlaneArrow(pos, -90f, gsize/2f, 0f, false);
+            CustomGizmos.DrawPlaneArrow(pos, -90f * endDirection.ToInt(), gsize/2f, 0f, false);
             Gizmos.matrix = matrixBak;
 
         }
@@ -348,7 +375,7 @@ public class TrackChanger : MonoBehaviour
             Gizmos.DrawCube(pos, size);
             Gizmos.DrawWireCube(pos, size);
             Gizmos.color = Color.green;
-            CustomGizmos.DrawPlaneArrow(pos, -90f, gsize / 2f, 0f, false);
+            CustomGizmos.DrawPlaneArrow(pos, -90f * endDirection.ToInt(), gsize / 2f, 0f, false);
             Gizmos.matrix = matrixBak;
         }
         

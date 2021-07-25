@@ -10,6 +10,91 @@ namespace Assets.Scripts.Utils
 {
     public static class Extensions
     {
+        public static bool IsDestroyed(this GameObject gameObj)
+        {
+            return gameObj == null && !ReferenceEquals(gameObj, null);
+        }
+
+       
+
+        public static void DestroyChilds(this GameObject parent, IEnumerable<int> childInstancesId = null, bool immediate = false)
+        {
+            for (int i = parent.transform.childCount - 1; i >= 0; i--)
+            {
+                var childID = parent.transform.GetChild(i).GetInstanceID();
+                if (childInstancesId.Contains(childID) || childInstancesId == null)
+                {
+                    if (immediate)
+                    {
+                        GameObject.DestroyImmediate(parent.transform.GetChild(i).gameObject);
+                    }
+                    else
+                    {
+                        GameObject.Destroy(parent.transform.GetChild(i).gameObject);
+
+                    }
+                }
+
+                
+            }
+            
+        }
+
+        /// <summary>
+        /// Cria um filho se já não tiver um <see cref="GameObject"/> com a mesma <paramref name="tag"/>
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="name"></param>
+        /// <param name="tag"></param>
+        /// <returns>A instância do filho achado ou criado</returns>
+        public static GameObject AddChildByTag(this GameObject parent, string tag, string name = null)
+        {
+            
+            var child = parent.FindChildByTag(tag);
+            if(child == null)
+            {
+                child = new GameObject(name ?? tag);
+                child.tag = tag;
+            }
+
+            child.transform.position = parent.transform.position;
+            child.transform.parent = parent.transform;
+            return child;
+        }
+
+        /// <summary>
+        /// Obtém uma lista de filhos com a tag <paramref name="tag"/>>
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static GameObject[] FindChildsByTag(this GameObject parent, string tag)
+        {
+            return parent.GetComponentsInChildren<GameObject>()
+                .Where(c =>  c.CompareTag(tag))
+                .ToArray();
+            
+
+        }
+
+        /// <summary>
+        /// Obtém o primeiro filho com a tag <paramref name="tag"/>>
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static GameObject FindChildByTag(this GameObject parent, string tag)
+        {
+            var res = parent.GetComponentsInChildren<Transform>()
+                .FirstOrDefault(c => c.CompareTag(tag));
+
+            return res != null ? res.gameObject : null;
+                
+               
+            
+
+        }
+
         public static int ToInt(this Direction2D direction)
         {
             return (int)direction;

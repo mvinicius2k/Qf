@@ -11,9 +11,11 @@ namespace Assets.Scripts.Common
     {
 
 
-        public const string MovimentationLayer = "Movimentation";
+        public const string TriggersLayer = "Triggers";
 
+        public const string UntaggedTag = "Untagged";
         public const string ChangeTrackFloorTag = "ChangeTrackFloor";
+        public const string ActionTriggerTag = "ActionTrigger";
 
         public const string MaterialsPath = "Assets/Materials/";
         public const string GroundLayer = "Ground";
