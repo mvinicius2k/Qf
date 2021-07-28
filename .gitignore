@@ -3,7 +3,8 @@
 Library
 obj
 
-!Assets/**/*.cs
+!Assets/Scripts/**/*.cs
+!Assets/Scenes/**/*.*
 !*.cs
 !*.csproj
 !*.sln

@@ -10,18 +10,26 @@ namespace Assets.Scripts.Utils
 {
     public static class Extensions
     {
+        
+
+        public static bool InstanceEquals(this GameObject gameObj, GameObject other)
+        {
+            return gameObj.GetInstanceID() == other.GetInstanceID();
+        }
+
         public static bool IsDestroyed(this GameObject gameObj)
         {
-            return gameObj == null && !ReferenceEquals(gameObj, null);
+            return gameObj == null && ReferenceEquals(gameObj, null);
         }
 
        
 
-        public static void DestroyChilds(this GameObject parent, IEnumerable<int> childInstancesId = null, bool immediate = false)
+        public static void DestroyChilds(this GameObject parent, int[] childInstancesId, bool immediate = false)
         {
             for (int i = parent.transform.childCount - 1; i >= 0; i--)
             {
-                var childID = parent.transform.GetChild(i).GetInstanceID();
+                var child = parent.transform.GetChild(i).gameObject;
+                var childID = child.GetInstanceID();
                 if (childInstancesId.Contains(childID) || childInstancesId == null)
                 {
                     if (immediate)
@@ -41,13 +49,51 @@ namespace Assets.Scripts.Utils
         }
 
         /// <summary>
+        /// Anexa um <paramref name="child"/> a ao <paramref name="parent"/> se já não houver outro filho de <paramref name="parent"/> com a mesma tag.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="child"></param>
+        /// <returns>Uma instância do objeto que foi anexado, sendo o <paramref name="child"/> ou o objeto que já estava lá</returns>
+        public static GameObject AttachChildByTag(this GameObject parent, GameObject child, bool immediate = false, bool samePosition = true)
+        {
+            var found = parent.FindChildByTag(child.tag);
+            GameObject attached;
+            if(found != null)
+            {
+                attached = found;
+
+
+
+                if(!found.InstanceEquals(child))
+                {
+                    if(immediate)
+                        GameObject.DestroyImmediate(child);
+                    else
+                        GameObject.Destroy(child);
+                }
+                
+                //child = null;
+            }
+            else
+            {
+                attached = child;
+                attached.transform.SetParent(parent.transform);
+                attached.transform.position = parent.transform.position;
+            }
+
+            
+            //attached.transform.parent = parent.transform;
+            return attached;
+        }
+
+        /// <summary>
         /// Cria um filho se já não tiver um <see cref="GameObject"/> com a mesma <paramref name="tag"/>
         /// </summary>
         /// <param name="parent"></param>
-        /// <param name="name"></param>
+        /// <param name="name">Se <see langword="null"/>, <paramref name="tag"/> será o nome</param>
         /// <param name="tag"></param>
         /// <returns>A instância do filho achado ou criado</returns>
-        public static GameObject AddChildByTag(this GameObject parent, string tag, string name = null)
+        public static GameObject AddChildByTag(this GameObject parent, string tag, string name = null, bool immediateDelete = false)
         {
             
             var child = parent.FindChildByTag(tag);
@@ -57,9 +103,7 @@ namespace Assets.Scripts.Utils
                 child.tag = tag;
             }
 
-            child.transform.position = parent.transform.position;
-            child.transform.parent = parent.transform;
-            return child;
+            return parent.AttachChildByTag(child, immediateDelete);
         }
 
         /// <summary>

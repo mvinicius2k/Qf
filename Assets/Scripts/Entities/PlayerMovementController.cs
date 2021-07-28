@@ -687,7 +687,8 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
 
-        playerAnimation.UpdateMotion();
+        
+        playerAnimation?.UpdateMotion();
 
 
 

@@ -8,6 +8,9 @@ namespace Assets.Scripts.Templates
 {
     public interface IMonoScript
     {
-        public void make();
+        /// <summary>
+        /// Chamado para carregar os objetos
+        /// </summary>
+        public void MetaObjects(bool calledOnLive);
     }
 }

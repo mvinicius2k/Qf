@@ -11,6 +11,7 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
 {
 
     protected bool Initialized { get; private set; }
+    protected bool InitializingObjs { get; private set; }
     protected Dictionary<string, GameObject> MetaReferences {get; private set; }
     protected IMonoScript instance;
 
@@ -38,47 +39,61 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
     }
 
 
-    public void InitMetaObjects(bool forceRecreate = false)
+    public void InitMetaObjects(bool @override = true, bool calledOnLive = false)
     {
-        if (forceRecreate)
+        InitializingObjs = true;
+        if (@override)
         {
-            CreateMetaObjects();
+            CreateMetaObjects(calledOnLive);
         }
         
-
-        foreach(var m in MetaReferences.Values)
+        foreach(var m in MetaReferences.Values.ToArray())
         {
-            gameObject.AddChildByTag(m.tag);
+            //MetaReferences[m.tag] = gameObject.AttachChildByTag(m, !calledOnLive);
         }
 
 
     }
 
-    public void RemoveGameObjects()
+    public void RemoveGameObjects(bool calledOnLive)
     {
-        var instancesID = MetaReferences.Values.Select(x => x.GetInstanceID());
-        gameObject.DestroyChilds(instancesID);
+        var instancesID = MetaReferences.Values.Select(x => x.GetInstanceID()).ToArray();
+        gameObject.DestroyChilds(instancesID, !calledOnLive);
     }
 
-    public GameObject RegisterReference(string tag, params Type[] components)
+    public GameObject RegisterReference(string tag, bool calledOnLive,  params Type[] components)
     {
-        return RegisterReference(new GameObject(tag, components), tag);
+        return RegisterReference(new GameObject(tag, components), tag, calledOnLive);
     }
 
-    public GameObject RegisterReference(GameObject gameObj, string tag = null)
+    public GameObject RegisterReference(GameObject gameObj, string tag = null, bool calledOnLive = true)
     {
 
         
         gameObj.tag = tag ?? gameObj.tag ?? Constants.UntaggedTag;
         tag = gameObj.tag;
 
-        if (!MetaReferences.ContainsKey(gameObj.tag))
+        if (!MetaReferences.ContainsKey(tag))
         {
-            MetaReferences[gameObj.tag] = gameObj;
+            MetaReferences[tag] = gameObject.AttachChildByTag(gameObj, !calledOnLive);
         }
         else
         {
-            DestroyImmediate(gameObj);
+
+            if (MetaReferences[tag].IsDestroyed())
+            {
+                MetaReferences[tag] = gameObj;
+            } 
+            else
+            {
+                if(calledOnLive)
+                    Destroy(gameObj);
+                else
+                    DestroyImmediate(gameObj);
+
+            }
+
+            
         }
 
 
@@ -86,35 +101,48 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
 
     }
 
-    public void ResetMetaObjects()
+    public void ResetMetaObjects(bool calledOnLive)
     {
-        RemoveGameObjects();
-        InitMetaObjects();
+        RemoveGameObjects(calledOnLive);
+        InitMetaObjects(true);
     }
 
     void Start()
     {
         InitMetaObjects();
-        Debug.Log("Start");
     }
     
-
+    [ExecuteInEditMode]
     protected void OnValidate()
     {
-        Debug.Log("Validade");
-        if (!Initialized)
-        {
-            InitMetaObjects(true);
-            Initialized = true;
-        }
+#if UNITY_EDITOR
+        // Para tirar aquele flood de sendmessage
+        if (this == null)
+            return;
+        if (!this.gameObject.activeSelf)
+            return;
+
 
         
+        if (!Initialized && !InitializingObjs)
+        {
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+
+                InitMetaObjects(true, false);
+                Initialized = true;
+            };
+        }
+
+#endif
     }
 
-    public void CreateMetaObjects()
+    public void CreateMetaObjects(bool calledOnLive)
     {
-        instance.make();
+        instance.MetaObjects(calledOnLive);
     }
 
-    public abstract void make();
+    public abstract void MetaObjects(bool calledOnLive);
+
+    
 }

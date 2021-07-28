@@ -16,17 +16,23 @@ namespace Assets.Scripts.Templates
             DrawDefaultInspector();
             MonoScript script = (MonoScript)target;
             EditorGUILayout.Space();
-            if (GUILayout.Button("Create Meta Objects"))
+            if (GUILayout.Button("Update Meta Objects"))
             {
-                script.InitMetaObjects(true);
+                script.InitMetaObjects(true, false);
             }
             if (GUILayout.Button("Remove Meta Objects"))
             {
-                script.RemoveGameObjects();
+                if(EditorUtility.DisplayDialog(nameof(MonoScript), "Tem certeza?", "Sim", "Cancelar"))
+                {
+                    script.RemoveGameObjects(false);
+                }
             }
             if (GUILayout.Button("Reset Meta Objects"))
             {
-                script.ResetMetaObjects();
+                if (EditorUtility.DisplayDialog(nameof(MonoScript), "Tem certeza?", "Sim", "Cancelar"))
+                {
+                    script.ResetMetaObjects(false);
+                }
             }
 
 

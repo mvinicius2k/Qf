@@ -36,11 +36,13 @@ public class PlayerContextAction : MonoScript, IMonoScript
 
     
 
-    public override void make()
+    public override void MetaObjects(bool calledOnLive)
     {
-        Debug.Log("Make");
-        var meta = RegisterReference(Constants.ActionTriggerTag, typeof(SphereCollider));
+        var meta = RegisterReference(Constants.ActionTriggerTag, calledOnLive, typeof(SphereCollider));
+        meta.layer = LayerMask.NameToLayer(Constants.TriggersLayer);
         trigger = meta.GetComponent<SphereCollider>();
+        trigger.center = Vector3.one;
+        
     }
 
     
