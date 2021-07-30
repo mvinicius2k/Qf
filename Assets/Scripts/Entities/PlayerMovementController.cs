@@ -356,7 +356,7 @@ public class PlayerMovementController : MonoBehaviour
         }
         else
         {
-            Debug.Log($"No ar, inercia = {inertia.x}");
+            //Debug.Log($"No ar, inercia = {inertia.x}");
             velocityVector.Set(inertia.x/JumpPenalty, rb.velocity.y, 0f);
             rb.AddForce(horizontalVelocity / HorizontalVelocityPenalty, 0f, 0f, ForceMode.VelocityChange);
         }

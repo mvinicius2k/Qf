@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Common
 {
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Common
         public const string ChangeTrackFloorTag = "ChangeTrackFloor";
         public const string ActionTriggerTag = "ActionTrigger";
 
-        public const string MaterialsPath = "Assets/Materials/";
+        public const string MaterialsPath = "";
         public const string GroundLayer = "Ground";
 
 
@@ -29,6 +30,11 @@ namespace Assets.Scripts.Common
         {
             get => Path.Combine(MaterialsPath, @"/PlayerBody");
         }
-        
+       
+
+        public static Material GreenLedMat = Resources.Load<Material>(Path.Combine(MaterialsPath, @"/Floor"));
+        public static Material RedLedMat = Resources.Load<Material>(Path.Combine(MaterialsPath, @"/red led"));
+
+        public const string InputContextAction = "Context Action";
     }
 }

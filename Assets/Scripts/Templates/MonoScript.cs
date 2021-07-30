@@ -59,6 +59,7 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
     {
         var instancesID = MetaReferences.Values.Select(x => x.GetInstanceID()).ToArray();
         gameObject.DestroyChilds(instancesID, !calledOnLive);
+        MetaReferences.Clear();
     }
 
     public GameObject RegisterReference(string tag, bool calledOnLive,  params Type[] components)
@@ -69,7 +70,8 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
     public GameObject RegisterReference(GameObject gameObj, string tag = null, bool calledOnLive = true)
     {
 
-        
+        if (this == null)
+            return null;
         gameObj.tag = tag ?? gameObj.tag ?? Constants.UntaggedTag;
         tag = gameObj.tag;
 
@@ -86,6 +88,7 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
             } 
             else
             {
+                MetaReferences[tag].MergeComponents(gameObj);
                 if(calledOnLive)
                     Destroy(gameObj);
                 else

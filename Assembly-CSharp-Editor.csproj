@@ -702,6 +702,12 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="EasyButtons.Editor">
+      <HintPath>Library\ScriptAssemblies\EasyButtons.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyButtons">
+      <HintPath>Library\ScriptAssemblies\EasyButtons.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

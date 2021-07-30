@@ -10,7 +10,18 @@ namespace Assets.Scripts.Utils
 {
     public static class Extensions
     {
-        
+        public static void MergeComponents(this GameObject gameObject, GameObject other)
+        {
+            var components = other.GetComponents(typeof(Component));
+            foreach (var item in components)
+            {
+                
+                Type type = item.GetType();
+                if(gameObject.GetComponent(type) == null)
+                    gameObject.AddComponent(item.GetType());
+
+            }
+        }
 
         public static bool InstanceEquals(this GameObject gameObj, GameObject other)
         {

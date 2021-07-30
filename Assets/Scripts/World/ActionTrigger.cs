@@ -5,7 +5,7 @@ using Assets.Scripts.Common;
 
 namespace Assets.Scripts.World
 {
-    [System.Serializable]
+    [Obsolete]
     public class ActionTrigger : MonoBehaviour
     {
 
@@ -42,9 +42,6 @@ namespace Assets.Scripts.World
         }
 
         
-        public void ResetMetaObjects()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

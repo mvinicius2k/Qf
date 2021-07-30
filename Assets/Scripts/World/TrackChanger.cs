@@ -226,8 +226,12 @@ public class TrackChanger : MonoBehaviour
     
     private void OnValidate()
     {
-        
-            SharedInit(false);
+        if (this == null)
+            return;
+        if (!this.gameObject.activeSelf)
+            return;
+
+        SharedInit(false);
 
         if (!masterColliderInit && masterCollider != null)
         {
