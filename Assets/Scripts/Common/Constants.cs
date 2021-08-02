@@ -30,7 +30,9 @@ namespace Assets.Scripts.Common
         {
             get => Path.Combine(MaterialsPath, @"/PlayerBody");
         }
-       
+        public const string MainCameraTag = "MainCamera";
+        public const string ContainerTag = "Container";
+        public const string EnergyTag = "Energy";
 
         public static Material GreenLedMat = Resources.Load<Material>(Path.Combine(MaterialsPath, @"/Floor"));
         public static Material RedLedMat = Resources.Load<Material>(Path.Combine(MaterialsPath, @"/red led"));

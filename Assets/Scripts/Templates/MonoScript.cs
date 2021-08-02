@@ -46,11 +46,11 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
         {
             CreateMetaObjects(calledOnLive);
         }
-        
+        /*
         foreach(var m in MetaReferences.Values.ToArray())
         {
-            //MetaReferences[m.tag] = gameObject.AttachChildByTag(m, !calledOnLive);
-        }
+            MetaReferences[m.tag] = gameObject.AttachChildByTag(m, !calledOnLive);
+        }*/
 
 
     }
@@ -62,37 +62,32 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
         MetaReferences.Clear();
     }
 
-    public GameObject RegisterReference(string tag, bool calledOnLive,  params Type[] components)
-    {
-        return RegisterReference(new GameObject(tag, components), tag, calledOnLive);
-    }
+    
 
-    public GameObject RegisterReference(GameObject gameObj, string tag = null, bool calledOnLive = true)
+    public GameObject RegisterReference(string tag, bool calledOnLive, params Type[] components)
     {
 
         if (this == null)
             return null;
-        gameObj.tag = tag ?? gameObj.tag ?? Constants.UntaggedTag;
-        tag = gameObj.tag;
 
         if (!MetaReferences.ContainsKey(tag))
         {
-            MetaReferences[tag] = gameObject.AttachChildByTag(gameObj, !calledOnLive);
+            
+            MetaReferences[tag] = gameObject.FindChildByTag(tag) ?? new GameObject(tag, components);
+            MetaReferences[tag].MergeComponents(components);
+            MetaReferences[tag].tag = tag;
         }
         else
         {
 
             if (MetaReferences[tag].IsDestroyed())
             {
-                MetaReferences[tag] = gameObj;
+                MetaReferences[tag] = new GameObject(tag, components);
             } 
             else
             {
-                MetaReferences[tag].MergeComponents(gameObj);
-                if(calledOnLive)
-                    Destroy(gameObj);
-                else
-                    DestroyImmediate(gameObj);
+                MetaReferences[tag].MergeComponents(components);
+                
 
             }
 
@@ -110,8 +105,9 @@ public abstract class MonoScript : MonoBehaviour, IInitializable, IMonoScript
         InitMetaObjects(true);
     }
 
-    void Start()
+    private void Start()
     {
+
         InitMetaObjects();
     }
     

@@ -3,7 +3,6 @@ using Assets.Scripts.World;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using EasyButtons;
 
 public class OpenGateDoor : MonoScript, IContextAction
 {
@@ -12,54 +11,77 @@ public class OpenGateDoor : MonoScript, IContextAction
 
     public Collider trigger;
     public Animator animDoors;
-    public bool active = true;
+    public bool _active = true;
+    public bool Active
+    {
+        get => _active;
+        set
+        {
+            _active = value;
+            UpdateMaterial();
+        }
+    }
     public MeshRenderer meshSignal;
     public Material signalActived;
     public Material signalInactived;
 
-    private bool _openned = false;
+    public bool _openned = false;
     public bool Openned
     {
         get => _openned;
         set
         {
             _openned = value;
-            UpdateMaterial();
+            UpdateMotion();
         }
     }
 
+    
+
     public void Action()
     {
-        if (!active)
+        if (!Active)
             return;
         Openned = !Openned;
 
-        if(animDoors != null)
+        UpdateMotion();
+
+    }
+
+    
+    private void UpdateMotion()
+    {
+        
+        if (animDoors != null)
         {
+            
             animDoors.SetBool(VarOpen, Openned);
 
-        } 
+        }
         else
         {
             Debug.LogWarning($"{nameof(animDoors)} nulo");
         }
-        
-
-        
     }
 
     public void UpdateMaterial()
     {
         if (meshSignal != null)
         {
-            if (active)
+            if(indexLight >= meshSignal?.sharedMaterials.Length)
             {
-
-                meshSignal.materials[indexLight].CopyPropertiesFromMaterial(signalActived);
+                Debug.LogWarning($"{nameof(indexLight)} ({indexLight}) precisa ser menor que {meshSignal?.sharedMaterials.Length}");
+                return;
             }
-            else
+
+            if (Active && signalActived != null)
             {
-                meshSignal.materials[indexLight].CopyPropertiesFromMaterial(signalInactived);
+                meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalActived);
+                
+            }
+            else if(signalInactived != null)
+            {
+                meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalInactived);
             }
 
         }
@@ -69,12 +91,20 @@ public class OpenGateDoor : MonoScript, IContextAction
     {
         UpdateMaterial();
     }
-
-    private void FixedUpdate()
+    private void Awake()
     {
-        
+        if(animDoors != null)
+        {
+            UpdateMotion();
+        }
     }
 
+    private new void OnValidate()
+    {
+        base.OnValidate();
+        UpdateMaterial();
+        //UpdateMotion();
+    }
     public override void MetaObjects(bool calledOnLive)
     {
 
