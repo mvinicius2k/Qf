@@ -17,6 +17,7 @@ namespace Assets.Scripts.Common
         public const string UntaggedTag = "Untagged";
         public const string ChangeTrackFloorTag = "ChangeTrackFloor";
         public const string ActionTriggerTag = "ActionTrigger";
+        public const string UnderwaterGroundTag = "UnderwaterGround";
 
         public const string MaterialsPath = "";
         public const string GroundLayer = "Ground";
@@ -30,6 +31,8 @@ namespace Assets.Scripts.Common
         {
             get => Path.Combine(MaterialsPath, @"/PlayerBody");
         }
+        public const string PlayerTag = "Player";
+
         public const string MainCameraTag = "MainCamera";
         public const string ContainerTag = "Container";
         public const string EnergyTag = "Energy";

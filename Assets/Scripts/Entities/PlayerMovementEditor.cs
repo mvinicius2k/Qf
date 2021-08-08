@@ -17,9 +17,19 @@ namespace Assets.Scripts.Entities
             DrawDefaultInspector();
             PlayerMovementController controller = (PlayerMovementController)target;
             EditorGUILayout.Space();
-            if (GUILayout.Button("Set Auto Feet Bounds"))
+            if (GUILayout.Button("Set Min Feet Bounds"))
             {
-                controller.SetFeetBounds();
+                controller.SetFeetBounds(new Vector3(
+                    controller.minFeetCheckSizeOffset,
+                    controller.minFeetCheckSizeOffset,
+                    controller.minFeetCheckSizeOffset));
+            }
+            if (GUILayout.Button("Set Extended Feet Bounds"))
+            {
+                controller.SetFeetBounds(new Vector3(
+                    0f,
+                    controller.extendedFeetCheckSizeOffset,
+                    0f));
             }
 
         }

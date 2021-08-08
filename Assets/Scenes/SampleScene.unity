@@ -479,8 +479,15 @@ MonoBehaviour:
   startDirection: -1
   endDirection: -1
   checkSize: 0.5
+  masterRender: {fileID: 919182480}
+  masterCollider: {fileID: 0}
   _size: {x: 1.6, y: 1, z: 0.19}
   gsize: 1.58
+--- !u!23 &919182480 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23690413366494096, guid: c45c41f59dbb9894cb895ef86d325026, type: 3}
+  m_PrefabInstance: {fileID: 919182476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &961849082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1223,7 +1230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685579423}
   m_LocalRotation: {x: -0, y: -0, z: -0.64263225, w: 0.76617485}
-  m_LocalPosition: {x: -4.18, y: 2.61, z: 0}
+  m_LocalPosition: {x: -4.3052316, y: 5.3980756, z: 0}
   m_LocalScale: {x: 7.13, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

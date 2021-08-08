@@ -1,4 +1,5 @@
 using Assets.Scripts.Common;
+using Assets.Scripts.Utils;
 using Assets.Scripts.World;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class OpenGateDoor : MonoScript, IContextAction
 {
     public const string VarOpen = "open";
-    public uint indexLight = 2;
+    public int indexLight = 2;
 
     public Collider trigger;
     public Animator animDoors;
@@ -76,13 +77,20 @@ public class OpenGateDoor : MonoScript, IContextAction
 
             if (Active && signalActived != null)
             {
-                meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalActived);
-                
+                meshSignal.SetSharedMaterial(indexLight, signalActived);
+                //meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalActived);
+
             }
             else if(signalInactived != null)
             {
-                meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalInactived);
+                meshSignal.SetSharedMaterial(indexLight, signalInactived);
+                //meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalInactived);
             }
+            else
+            {
+                Debug.LogWarning($"{nameof(signalInactived)} nulo");
+            }
+
 
         }
     }

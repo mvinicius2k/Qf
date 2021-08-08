@@ -10,6 +10,13 @@ namespace Assets.Scripts.Utils
 {
     public static class Extensions
     {
+
+        public static void SetSharedMaterial(this MeshRenderer meshR, int index, Material newMaterial)
+        {
+            var copy = meshR.sharedMaterials;
+            copy[index] = newMaterial;
+            meshR.sharedMaterials = copy;
+        }
         public static void MergeComponents(this GameObject gameObject, params Type[] components)
         {
             foreach (var item in components)

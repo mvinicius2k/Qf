@@ -37,7 +37,7 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pMovement != null)
+        if(pMovement != null && energyHUD != null)
         {
             if (pMovement.IsJumping && !completed)
             {

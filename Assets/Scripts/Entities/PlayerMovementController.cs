@@ -20,11 +20,15 @@ public class PlayerMovementController : MonoBehaviour
     public GameObject rootPlayer;
     
 
-    public bool freezeRotations = true;
     public float jumpForce = 3f;
     public float speed = 7f;
     public float defaultJumpTimer = 0.3f; //um décimo do valor de pulo é um bom timer
     public Vector3 feetCheckSize = new Vector3(0.3f, 0.03f, 0.36f);
+
+    //Autos
+    public float minFeetCheckSizeOffset = 0.02f;
+    public float extendedFeetCheckSizeOffset = 0.1f;
+
     public float slopeCheckDistance = 0.3f;
     [Range(0f, 90f)]
     public float maxAngleMove = 45f;
@@ -32,6 +36,8 @@ public class PlayerMovementController : MonoBehaviour
 
     public Transform feetPos;
     public LayerMask ground;
+    public ParticleSystem dustOnGrounding;
+
     private Collider feetCollider, bodyCollider;
 
     private const float JumpPenalty = 2f;
@@ -49,7 +55,7 @@ public class PlayerMovementController : MonoBehaviour
     private HitKind hitting;
     private Animator anim;
     private PlayerAnimation playerAnimation;
-
+    private bool oldIsGrounded;
     private bool isGrounded, isJumping;
     private float xInput;
     private bool autoRun;
@@ -60,6 +66,7 @@ public class PlayerMovementController : MonoBehaviour
     private int trackChangerLerpCount;
     private bool sliding;
 
+    private bool Grounding { get => !oldIsGrounded && isGrounded; }
     public bool IsRunning
     {
         get => autoRun || (isGrounded && xInput != 0f);
@@ -130,17 +137,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool DetectGround(out Collider[] info)
     {
-        if(feetPos == null)
+        if(feetCollider == null)
         {
             info = null;
             return false;
         }
             
-        info = Physics.OverlapBox(feetPos.position, feetCheckSize / 2, Quaternion.identity, ground.value);
+        info = Physics.OverlapBox(feetCollider.bounds.center, feetCheckSize / 2, Quaternion.identity, ground.value);
         var collidableGround = false;
         foreach(var i in info)
         {
-            if (LayerMask.LayerToName(i.gameObject.layer) == Constants.GroundLayer)
+            if (LayerMask.LayerToName(i.gameObject.layer) == Constants.GroundLayer && i.gameObject.tag != Constants.PlayerTag)
             {
                 collidableGround = true;
                 break;
@@ -275,6 +282,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         bool isOnChangeTrack = false;
 
+
         foreach (var w in whatIsGround)
         {
             switch (w.tag)
@@ -297,18 +305,45 @@ public class PlayerMovementController : MonoBehaviour
                     
 
                     break;
+
+                
             }
 
         }
 
+        //TrackChanger
         this.isOnChangeTrack = isOnChangeTrack;
         if (!isOnChangeTrack && trackChanger != null)
         {
             trackChanger = null;
         }
+
+        //Pousando
+        if (Grounding)
+        {
+            MakeDust();
+            SetFeetBounds(new Vector3(
+                        minFeetCheckSizeOffset,
+                        extendedFeetCheckSizeOffset,
+                        minFeetCheckSizeOffset));
+        }
+
     }
 
-  
+    private void MakeDust()
+    {
+        if (dustOnGrounding == null)
+            return;
+        foreach(var w in whatIsGround)
+        {
+            if (Helpers.DustableTags.Contains(w.tag))
+            {
+                dustOnGrounding?.Play();
+                return;
+            }
+        }
+        
+    }
 
     
     private void HorizontalMovement()
@@ -413,21 +448,22 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    public void SetFeetBounds()
+    
+
+    public void SetFeetBounds( Vector3 offset)
     {
-        if(feetCollider == null)
-        {
-            feetCollider = GetComponent<BoxCollider>();
-        }
+        if (feetCollider == null)
+            feetCollider = GetComponent<CapsuleCollider>();
 
         if(feetPos != null)
         {
-            feetPos.position = feetCollider.bounds.center;
-            feetCheckSize = feetCollider.bounds.size + new Vector3(0.02f, 0.02f, 0.02f);
+            //feetPos.position = feetCollider.bounds.center;
+            feetCheckSize = feetCollider.bounds.size + offset;
         }
-        
-        
+
     }
+
+    
     
     /// <summary>
     /// Checagem de chãos inclinados
@@ -575,6 +611,8 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    
+
     private void OnCollisionEnter(Collision collision)
     {
         IsCollinding(collision);
@@ -586,7 +624,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        feetCollider = GetComponent<BoxCollider>();
+        feetCollider = GetComponent<CapsuleCollider>();
         anim = rootPlayer.GetComponent<Animator>();
         playerAnimation = new PlayerAnimation(this, anim);
 
@@ -597,12 +635,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
-        if (freezeRotations)
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-        }
-
-        
+     
 
 
     }
@@ -657,28 +690,13 @@ public class PlayerMovementController : MonoBehaviour
         {
             if (isGrounded && Input.GetButtonDown("Jump")) //Corpo vai pular
             {
-                inertia = rb.velocity;
-                isJumping = true;
-                jumpVector.Set(0, jumpForce, 0);
-                rb.velocity = jumpVector;
-                jumpTimer = defaultJumpTimer; //iniciando timer
-
-
+                Jump();
 
             }
 
             if (Input.GetButton("Jump") && isJumping) //Acréscimo na força de pulo se botão segurado
             {
-                if (jumpTimer > 0)
-                {
-                    velocityVector.Set(0, jumpForce, 0);
-                    rb.velocity = velocityVector;
-                    jumpTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    isJumping = false; //Força de pulo interrompida ao soltar o botão... agora em queda livre
-                }
+                Jumping();
             }
 
             if (Input.GetButtonUp("Jump"))
@@ -694,11 +712,47 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    private void Jumping()
+    {
+        if (jumpTimer > 0)
+        {
+            velocityVector.Set(0, jumpForce, 0);
+            rb.velocity = velocityVector;
+            jumpTimer -= Time.deltaTime;
+        }
+        else
+        {
+            isJumping = false; //Força de pulo interrompida ao soltar o botão... agora em queda livre
+        }
+    }
+
+    
+    private void Jump()
+    {
+
+
+        inertia = rb.velocity;
+        isJumping = true;
+        jumpVector.Set(0, jumpForce, 0);
+        rb.velocity = jumpVector;
+        jumpTimer = defaultJumpTimer; //iniciando timer
+
+        SetFeetBounds(new Vector3(
+                    minFeetCheckSizeOffset,
+                    minFeetCheckSizeOffset,
+                    minFeetCheckSizeOffset));
+        
+        MakeDust();
+    }
+
     private void FixedUpdate()
     {
         SlopeCheck();
+        oldIsGrounded = isGrounded;
         isGrounded = DetectGround(out whatIsGround);
         GetGroundProperties();
+
+        
         
 
         if (isChangingToEndTrack || isChangingToStartTrack) //Está trocando de trecho
@@ -717,6 +771,11 @@ public class PlayerMovementController : MonoBehaviour
 
 
 
+    }
+
+    private void OnFalling()
+    {
+        throw new NotImplementedException();
     }
 
     private void OnValidate()
@@ -738,7 +797,9 @@ public class PlayerMovementController : MonoBehaviour
         {
             Gizmos.color = Color.white;
         }
-        Gizmos.DrawWireCube(feetPos.position, feetCheckSize);
+
+        if(feetCollider != null)
+            Gizmos.DrawWireCube(feetCollider.bounds.center, feetCheckSize);
 
         Gizmos.color = Color.green;
         
