@@ -8,6 +8,6 @@ namespace Assets.Scripts.Entities
 {
     public abstract class Effect : IEffect
     {
-
+        public DamageKind damageKind;
     }
 }

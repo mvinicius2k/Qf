@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
-    public const uint JumpCost = 100;
+    /*public const uint JumpCost = 100;
 
     public float defaultHealth = 1000;
     public float defaultEnergy = 1000;
@@ -17,11 +17,11 @@ public class PlayerCombatController : MonoBehaviour
     private bool completed;
     private PlayerMovementController pMovement;
     public RectTransform energyHUD;
-
+    */
     private void Awake()
     {
-        pMovement = GetComponent< PlayerMovementController>();
-        /*energyHUD = gameObject.FindChildByTag(Constants.MainCameraTag)
+        /*pMovement = GetComponent< PlayerMovementController>();
+        energyHUD = gameObject.FindChildByTag(Constants.MainCameraTag)
             .FindChildByTag(Constants.ContainerTag)
             .FindChildByTag(Constants.EnergyTag)
             .GetComponent<RectTransform>();*/
@@ -37,6 +37,7 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(pMovement != null && energyHUD != null)
         {
             if (pMovement.IsJumping && !completed)
@@ -52,6 +53,6 @@ public class PlayerCombatController : MonoBehaviour
                 completed = false;
             }
 
-        }
+        }*/
     }
 }

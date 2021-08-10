@@ -7,14 +7,33 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
+    [Serializable]
     public class Defense : MonoBehaviour
     {
-        public float defaultLife = 50f;
-        public float currentLife = 50f;
-        public float defaultArmor = 100f;
-        public float currentArmor = 100f;
+        [SerializeField]
+        private float defaultLife = 500f;
+        [SerializeField]
+        private float currentLife = 500f;
+        [SerializeField]
+        private float defaultArmor = 1000f;
+        [SerializeField]
+        private float currentArmor = 1000f;
 
-        public Effect immunity;
+        public void DealDamage(float totalDamage, DamageKind dk)
+        {
+            if (dk == immunity)
+                totalDamage *= immunityMult;
+
+            currentArmor -= totalDamage;
+            if(currentArmor < 0)
+            {
+                currentLife -= -currentArmor;
+                currentArmor = 0f;
+            }
+        }
+
+        public DamageKind immunity;
+        public float immunityMult = 1f;
         
     }
 }

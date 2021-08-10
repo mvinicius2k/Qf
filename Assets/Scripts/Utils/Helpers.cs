@@ -14,6 +14,10 @@ namespace Assets.Scripts.Utils
             Constants.UntaggedTag,
             Constants.ChangeTrackFloorTag
         };
+        public static readonly string[] AttackableTags = new string[]
+        {
+            Constants.PlayerTag,
+        };
        
     }
 }
