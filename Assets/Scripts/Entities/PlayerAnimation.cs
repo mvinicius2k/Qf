@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    class PlayerAnimation
+    public class PlayerAnimation : MonoBehaviour
     {
 
         public const int AnimLayerMovement = 0;
@@ -19,35 +19,29 @@ namespace Assets.Scripts.Entities
         public const string VarFall = "Fall";
         public const string VarHit = "HitKind";
 
+
+
+        public Animator Animator;
+
+        public Player player;
+
         
 
-        public Animator Animator { get; private set; }
-
-        private PlayerMovementController movementInstance;
-        private AnimatorClipInfo[] currentClipInfo;
-        private float currentClipLength;
-        public PlayerAnimation(PlayerMovementController movementInstance, Animator animator)
+        public void Update()
         {
-            this.movementInstance = movementInstance;
-            Animator = animator;
-
-            currentClipInfo = Animator.GetCurrentAnimatorClipInfo(AnimLayerMovement);
-            currentClipLength = currentClipInfo[0].clip.length;
-        }
-
-        public void UpdateMotion()
-        {
-            Animator.SetBool(VarRun, movementInstance.IsRunning);
-            Animator.SetBool(VarIdle, movementInstance.IsIdle);
-            Animator.SetBool(VarJump, movementInstance.IsJumping);
-            Animator.SetBool(VarGrounded, movementInstance.IsGrounded);
-            Animator.SetBool(VarFall, movementInstance.IsFalling);
-            Animator.SetInteger(VarHit, (int) movementInstance.Hitting);
+            Animator.SetBool(VarRun, player.playerMovementController.IsRunning);
+            Animator.SetBool(VarIdle, player.playerMovementController.IsIdle);
+            Animator.SetBool(VarJump, player.playerMovementController.IsJumping);
+            Animator.SetBool(VarGrounded, player.playerMovementController.IsGrounded);
+            Animator.SetBool(VarFall, player.playerMovementController.IsFalling);
+            Animator.SetInteger(VarHit, (int)player.defense.currentHit);
 
             if(Animator.GetBool(VarFall) == true)
             {
 
             }
+            
+
         }
     }
 }

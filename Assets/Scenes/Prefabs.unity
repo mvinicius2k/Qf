@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-59884
+  m_Name: pb_Mesh-98586
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -421,3 +421,60 @@ PrefabInstance:
       objectReference: {fileID: 576520470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1afdfae9c01aa4cb4f0ad6a65264ae, type: 3}
+--- !u!1001 &2886837818451292003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7449673
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8478672
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.929787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886837818866472303, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_Name
+      value: Electric Hit
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}

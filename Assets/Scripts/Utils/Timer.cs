@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
-    [Serializable]
     public class Timer : MonoBehaviour
     {
         /// <summary>
@@ -16,26 +15,27 @@ namespace Assets.Scripts.Utils
         public float countdown;
         public bool running;
         public bool startFinished;
+        private new string name;
 
+        public string Name { get => name; set => name = value; }
+        public bool Finished { get => countdown == 0f; }
 
-        public float CurrentCountdown { private set; get; }
-
-
+        
 
         private void Update()
         {
             if (running)
             {
 
-                if(CurrentCountdown > 0)
+                if(countdown > 0)
                 {
-                    CurrentCountdown -= Time.deltaTime;
+                    countdown -= Time.deltaTime;
 
                 }
                 else
                 {
                     running = false;
-                    CurrentCountdown = 00f;
+                    countdown = 0f;
                 }
             }
             
@@ -51,16 +51,15 @@ namespace Assets.Scripts.Utils
             running = true;
         }
 
-        public void Restart()
+        public void Restart(float? newCountdown = null)
         {
-            CurrentCountdown = countdown;
-            running = true;
+            countdown = newCountdown ?? countdown;
+            Play();
         }
 
         private void Start()
         {
-            CurrentCountdown = 0f;
-            running = false;
+            running = startFinished;
         }
     }
 }

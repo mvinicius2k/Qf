@@ -8,6 +8,7 @@ namespace Assets.Scripts.Entities
 {
     public enum DamageKind
     {
+        None,
         Kinetic,
         Fire,
         Ice,

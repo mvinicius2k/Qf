@@ -37,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour
     public Transform feetPos;
     public LayerMask ground;
     public ParticleSystem dustOnGrounding;
+    public Player player;
 
     private Collider feetCollider, bodyCollider;
 
@@ -91,10 +92,7 @@ public class PlayerMovementController : MonoBehaviour
     { 
         get => velocityVector;
     }
-    public HitKind Hitting
-    {
-        get => hitting;
-    }
+    
 
     
 
@@ -162,6 +160,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void ChangeTrack(bool toEnd)
     {
+        
         var info = new RaycastHit();
 
         bool isOnTrack;
@@ -184,7 +183,7 @@ public class PlayerMovementController : MonoBehaviour
         switch (trackChangerState)
         {
             case TrackChangerState.StartRotation:
-
+                rb.constraints &= ~RigidbodyConstraints.FreezePositionZ; //Liberando movimentação no eixo Z
                 autoRun = true;
                 rootPlayer.transform.Rotate(new Vector3(0f, trackChanger.travelAngleToEnd * rotateDirection, 0f));
 
@@ -249,7 +248,8 @@ public class PlayerMovementController : MonoBehaviour
                     this.isChangingToStartTrack = false;
                 }
 
-               
+
+                rb.constraints |= RigidbodyConstraints.FreezePositionZ; //Bloqueando movimentação no eixo Z
                 
                 break;
 
@@ -626,7 +626,6 @@ public class PlayerMovementController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         feetCollider = GetComponent<CapsuleCollider>();
         anim = rootPlayer.GetComponent<Animator>();
-        playerAnimation = new PlayerAnimation(this, anim);
 
         oldFeetColliderMaterial = null;
 
@@ -706,7 +705,6 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         
-        playerAnimation?.UpdateMotion();
 
 
 

@@ -32,5 +32,11 @@ namespace Assets.Scripts.Common
         /// É acertado com um hit mais forte no ar
         /// </summary>
         OnAir = 4,
+        /// <summary>
+        /// Depende da quantidade de dano e da armadura
+        /// </summary>
+        Auto = 100,
+
+        
     }
 }

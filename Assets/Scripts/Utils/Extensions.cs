@@ -10,7 +10,7 @@ namespace Assets.Scripts.Utils
 {
     public static class Extensions
     {
-
+        
         public static void SetSharedMaterial(this MeshRenderer meshR, int index, Material newMaterial)
         {
             var copy = meshR.sharedMaterials;
@@ -50,13 +50,13 @@ namespace Assets.Scripts.Utils
 
        
 
-        public static void DestroyChilds(this GameObject parent, int[] childInstancesId, bool immediate = false)
+        public static void DestroyChilds(this GameObject parent, int[] childInstancesId = null, bool immediate = false)
         {
             for (int i = parent.transform.childCount - 1; i >= 0; i--)
             {
                 var child = parent.transform.GetChild(i).gameObject;
                 var childID = child.GetInstanceID();
-                if (childInstancesId.Contains(childID) || childInstancesId == null)
+                if (childInstancesId == null || childInstancesId.Contains(childID))
                 {
                     if (immediate)
                     {

@@ -20,9 +20,11 @@ namespace Assets.Scripts.Entities
 
         public HitKind hitkind;
         public DamageKind damageKind;
-        public Timer delayBetweenAttacks;
+        public float delayBetweenAttacks;
+        public float delayAttackRecover;
 
         private List<Defense> toAtack;
+        private Timer delayBetweenAttacksTimer;
 
 
         /// <summary>
@@ -32,9 +34,12 @@ namespace Assets.Scripts.Entities
 
         public Collider areaAttack;
 
+        
+
         public void Hit(Defense defense)
         {
-            defense.DealDamage(TotalDamage, damageKind);
+            if(defense.ReadyForAttacks)
+                defense.DealDamage(TotalDamage, damageKind, hitkind, delayAttackRecover, effect);
 
 
         }
@@ -44,30 +49,45 @@ namespace Assets.Scripts.Entities
         {
             if (Helpers.AttackableTags.Contains(other.gameObject.tag))
             {
+                
                 for (int i = 0; i < toAtack.Count; i++)
                 {
-                    if (!toAtack[i].gameObject.InstanceEquals(gameObject))
+                    if (toAtack[i].gameObject.InstanceEquals(gameObject))
                     {
-                        toAtack.Add(other.gameObject.GetComponent<Defense>());
+                        return;
                     }
 
                 }
+
+                var defense = other.gameObject.GetComponent<Defense>();
+                if (defense != null)
+                    toAtack.Add(defense);
             }
 
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            if (Helpers.AttackableTags.Contains(other.gameObject.tag))
+            {
+                var defense = other.gameObject.GetComponent<Defense>();
+                if(defense != null)
+                    toAtack.Remove(other.gameObject.GetComponent<Defense>());
+            }
+        }
+
         private void Update()
         {
-            if (loop && delayBetweenAttacks != null)
+            if (loop && delayBetweenAttacksTimer != null)
             {
-                if(delayBetweenAttacks.CurrentCountdown == 0f)
+                if(delayBetweenAttacksTimer.Finished)
                 {
                     for (int i = 0; i < toAtack.Count; i++)
                     {
                         Hit(toAtack[i]);
                     }
 
-                    delayBetweenAttacks.Restart();
+                    delayBetweenAttacksTimer.Restart();
                 }
                 
 
@@ -75,7 +95,16 @@ namespace Assets.Scripts.Entities
 
         }
 
-        
+        private void Awake()
+        {
+            toAtack = new List<Defense>();
+            delayBetweenAttacksTimer = gameObject.AddComponent<Timer>();
+            delayBetweenAttacksTimer.countdown = delayBetweenAttacks;
+            delayBetweenAttacksTimer.Name = "DelayBetweenAttacksTimer";
+            areaAttack.isTrigger = true;
+        }
+
+
     }
 
 }
