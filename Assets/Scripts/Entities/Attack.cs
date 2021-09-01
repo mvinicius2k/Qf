@@ -18,25 +18,26 @@ namespace Assets.Scripts.Entities
         public float damageMult = 1;
         public bool loop;
 
-        public HitKind hitkind;
+        public PlayerHitKind hitkind;
         public DamageKind damageKind;
         public float delayBetweenAttacks;
         public float delayAttackRecover;
 
-        private List<Defense> toAtack;
-        private Timer delayBetweenAttacksTimer;
+        protected List<Defense> toAtack;
+        protected Timer delayBetweenAttacksTimer;
 
 
         /// <summary>
         /// Dano total
         /// </summary>
         public float TotalDamage { get => damage * damageMult; }
+        
 
         public Collider areaAttack;
 
         
 
-        public void Hit(Defense defense)
+        public virtual void Hit(Defense defense)
         {
             if(defense.ReadyForAttacks)
                 defense.DealDamage(TotalDamage, damageKind, hitkind, delayAttackRecover, effect);
@@ -101,7 +102,8 @@ namespace Assets.Scripts.Entities
             delayBetweenAttacksTimer = gameObject.AddComponent<Timer>();
             delayBetweenAttacksTimer.countdown = delayBetweenAttacks;
             delayBetweenAttacksTimer.Name = "DelayBetweenAttacksTimer";
-            areaAttack.isTrigger = true;
+            if(areaAttack != null)
+                areaAttack.isTrigger = true;
         }
 
 

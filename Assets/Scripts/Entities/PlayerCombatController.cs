@@ -1,4 +1,5 @@
 using Assets.Scripts.Common;
+using Assets.Scripts.Entities;
 using Assets.Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,24 +8,20 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
-    /*public const uint JumpCost = 100;
 
-    public float defaultHealth = 1000;
-    public float defaultEnergy = 1000;
-    public float currentEnergy = 1000;
-    public float currentHealth = 1000;
 
-    private bool completed;
-    private PlayerMovementController pMovement;
-    public RectTransform energyHUD;
-    */
+
+    public bool stop;
+
+    public Weapon weapon;
+    private bool shooted;
+    public Player player;
+
+    public bool Shooted { get => shooted;}
+
     private void Awake()
     {
-        /*pMovement = GetComponent< PlayerMovementController>();
-        energyHUD = gameObject.FindChildByTag(Constants.MainCameraTag)
-            .FindChildByTag(Constants.ContainerTag)
-            .FindChildByTag(Constants.EnergyTag)
-            .GetComponent<RectTransform>();*/
+       
 
     }
 
@@ -37,22 +34,16 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(pMovement != null && energyHUD != null)
-        {
-            if (pMovement.IsJumping && !completed)
-            {
-                currentEnergy -= JumpCost;
-                
-                var cost = ((JumpCost / defaultEnergy)) * energyHUD.rect.width;
-                energyHUD.localPosition = new Vector3(energyHUD.localPosition.x - cost, energyHUD.localPosition.y, energyHUD.localPosition.z);
-                completed = true;
-            }
-            else if(pMovement.IsGrounded)
-            {
-                completed = false;
-            }
 
-        }*/
+        if (Input.GetButton(Constants.InputFire1) && player.weaponSlot.Equip)
+        {
+            if (weapon.TryShoot())
+            {
+                player.playerMovementController.StopControls(weapon.stopDuration);
+            }
+        }
+      
     }
+
+    
 }

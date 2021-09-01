@@ -20,6 +20,9 @@ namespace Assets.Scripts.Common
         public const string ActionTriggerTag = "ActionTrigger";
         public const string UnderwaterGroundTag = "UnderwaterGround";
         public const string MantleTag = "Mantle";
+        public const string AutoActionTriggerTag = "AutoActionTrigger";
+        public const string HUDCellTag = "HUDCell";
+        public const string EnemyTag = "Enemy";
 
         public const string MaterialsPath = "";
         public const string GroundLayer = "Ground";
@@ -33,9 +36,14 @@ namespace Assets.Scripts.Common
         public const string EnergyTag = "Energy";
 
         //Paths
-        public const string NoMaterialPath = "Materials/NoMaterial.mat";
+        public const string ResStringsPath = "Strings/Main";
+        public const string ResNoMaterialPath = "Materials/NoMaterial";
+
+        public static string StringsPtbrPath = Path.Combine(Application.persistentDataPath, "Strings/pt-BR.json");
+        public static string StringsPtbrClassPath = Application.dataPath + "/Scripts/Res/Id.cs";
 
         public const string InputContextAction = "Context Action";
+        public const string InputFire1 = "Fire1";
 
         public const int CountGroundHitKind = 6;
     }

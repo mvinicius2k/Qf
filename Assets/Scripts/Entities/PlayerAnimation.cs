@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
+    public enum PlayerTemplate
+    {
+        Default = 0,
+        Gun = 1
+    }
+
     public class PlayerAnimation : MonoBehaviour
     {
 
@@ -18,6 +24,9 @@ namespace Assets.Scripts.Entities
         public const string VarGrounded = "Grounded";
         public const string VarFall = "Fall";
         public const string VarHit = "HitKind";
+        public const string VarTemplate = "Template";
+        public const string VarShooted = "Shooted";
+        public const string VarDeath = "Death";
 
 
 
@@ -25,23 +34,29 @@ namespace Assets.Scripts.Entities
 
         public Player player;
 
-        
+        public PlayerTemplate playerTemplate;
+
+        public void Die()
+        {
+            Animator.SetTrigger(VarDeath);
+        }
 
         public void Update()
         {
+
+            Animator.SetFloat(VarTemplate, Convert.ToSingle((int) playerTemplate));
             Animator.SetBool(VarRun, player.playerMovementController.IsRunning);
             Animator.SetBool(VarIdle, player.playerMovementController.IsIdle);
             Animator.SetBool(VarJump, player.playerMovementController.IsJumping);
             Animator.SetBool(VarGrounded, player.playerMovementController.IsGrounded);
             Animator.SetBool(VarFall, player.playerMovementController.IsFalling);
             Animator.SetInteger(VarHit, (int)player.defense.currentHit);
-
-            if(Animator.GetBool(VarFall) == true)
-            {
-
-            }
+            Animator.SetBool(VarShooted, player.playerCombatController.Shooted);
+            
             
 
         }
+
+        
     }
 }

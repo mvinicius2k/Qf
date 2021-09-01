@@ -148,7 +148,7 @@ namespace Assets.Scripts.Utils
         }
 
         /// <summary>
-        /// Obtém o primeiro filho com a tag <paramref name="tag"/>>
+        /// Obtém o primeiro filho com a tag <paramref name="tag", se não encontrar retorna null />>
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="tag"></param>
@@ -163,6 +163,19 @@ namespace Assets.Scripts.Utils
                
             
 
+        }
+
+        /// <summary>
+        /// Obtém um array de filhos
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        public static Transform[] GetChilds(this Transform parent)
+        {
+            Transform[] pathNodes = new Transform[parent.transform.childCount];
+            for (int i = 0; i < pathNodes.Length; i++)
+                pathNodes[i] = parent.transform.GetChild(i);
+            return pathNodes;
         }
 
         public static int ToInt(this Direction2D direction)

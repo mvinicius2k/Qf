@@ -61,5 +61,10 @@ namespace Assets.Scripts.Utils
         {
             running = startFinished;
         }
+
+        public void Stop()
+        {
+            countdown = 0f;
+        }
     }
 }

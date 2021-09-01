@@ -5,14 +5,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenGateDoor : MonoScript, IContextAction
+public class GateDoor  : MonoBehaviour, IContextAction
 {
     public const string VarOpen = "open";
     public int indexLight = 2;
 
-    public Collider trigger;
     public Animator animDoors;
     public bool _active = true;
+    public bool _passowordOk = true;
+
+    public AudioSource audioSource;
+    public AudioClip audioActive;
+
+    private bool mute = false;
     public bool Active
     {
         get => _active;
@@ -21,6 +26,15 @@ public class OpenGateDoor : MonoScript, IContextAction
             _active = value;
             UpdateMaterial();
         }
+    }
+
+    public bool PassawordOk { 
+        get => _passowordOk;
+        set 
+        {
+            _passowordOk = value;
+            UpdateMaterial();
+        } 
     }
     public MeshRenderer meshSignal;
     public Material signalActived;
@@ -41,12 +55,18 @@ public class OpenGateDoor : MonoScript, IContextAction
 
     public void Action()
     {
-        if (!Active)
+        if (!Active || !PassawordOk)
             return;
         Openned = !Openned;
 
         UpdateMotion();
 
+    }
+
+    public void ForceOpen()
+    {
+        _openned = true;
+        UpdateMotion();
     }
 
     
@@ -55,7 +75,8 @@ public class OpenGateDoor : MonoScript, IContextAction
         
         if (animDoors != null)
         {
-            
+            if(!mute)
+                audioSource.PlayOneShot(audioActive);
             animDoors.SetBool(VarOpen, Openned);
 
         }
@@ -75,7 +96,7 @@ public class OpenGateDoor : MonoScript, IContextAction
                 return;
             }
 
-            if (Active && signalActived != null)
+            if (Active && PassawordOk && signalActived != null)
             {
                 meshSignal.SetSharedMaterial(indexLight, signalActived);
                 //meshSignal.sharedMaterials[indexLight]?.CopyPropertiesFromMaterial(signalActived);
@@ -97,34 +118,23 @@ public class OpenGateDoor : MonoScript, IContextAction
 
     private void Start()
     {
+        if(animDoors != null)
+        {
+            mute = true;
+            UpdateMotion();
+            mute = false;
+        }
         UpdateMaterial();
     }
     private void Awake()
     {
-        if(animDoors != null)
-        {
-            UpdateMotion();
-        }
     }
 
-    private new void OnValidate()
+    private void OnValidate()
     {
-        base.OnValidate();
         UpdateMaterial();
-        //UpdateMotion();
     }
-    public override void MetaObjects(bool calledOnLive)
-    {
-
-        var gameObj = RegisterReference(Constants.ActionTriggerTag, calledOnLive, typeof(SphereCollider));
-        if (gameObj == null)
-            return;
-        gameObj.layer = LayerMask.NameToLayer(Constants.TriggersLayer);
-        
-        trigger = gameObj.GetComponent<SphereCollider>();
-        trigger.isTrigger = true;
-        
-    }
+    
 
 
     

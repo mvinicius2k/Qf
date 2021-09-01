@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-98586
+  m_Name: pb_Mesh-1218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -357,7 +357,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1667460403141156425, guid: 4a1afdfae9c01aa4cb4f0ad6a65264ae, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1667460403141156425, guid: 4a1afdfae9c01aa4cb4f0ad6a65264ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 3190
       objectReference: {fileID: 0}
+    - target: {fileID: 7240456372609229551, guid: 4a1afdfae9c01aa4cb4f0ad6a65264ae, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ded3ee337069fe34aad399430dc3856c, type: 2}
     - target: {fileID: 7702097947459817169, guid: 4a1afdfae9c01aa4cb4f0ad6a65264ae, type: 3}
       propertyPath: m_Name
       value: Dirty Carbon Wall
@@ -428,6 +432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 981864744658572175, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 2886837818866472302, guid: 1d9cc5170dcac1c4c9f04ac6b3439e2f, type: 3}
       propertyPath: m_RootOrder
       value: 1

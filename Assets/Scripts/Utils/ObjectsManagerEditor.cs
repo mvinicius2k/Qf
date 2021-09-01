@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
+# if UNITY_EDITOR
     [CustomEditor(typeof(ObjectsManager), true)]
     class ObjectsManagerEditor : Editor
     {
@@ -36,4 +37,5 @@ namespace Assets.Scripts.Utils
 
 
     }
+#endif
 }

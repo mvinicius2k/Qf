@@ -10,7 +10,7 @@ namespace Assets.Scripts.Entities
     public interface IEffect
     {
         
-        public ParticleSystem GetParticulesSystem();
+        public ParticleSystem GetParticules();
         public float GetDamagePerSecond();
     }
 }

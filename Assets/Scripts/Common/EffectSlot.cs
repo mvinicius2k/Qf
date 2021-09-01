@@ -22,15 +22,50 @@ namespace Assets.Scripts.Common
         private MeshRenderer[] body;
         private Material[][] oldMaterials;
         private Timer durationTimer;
+        private Effect currentEffect; // É uma instância, se alterar valores, irá alterar o efeito que a entidade causa para todas as  outras entidades
 
+        public Effect CurrentEffect { get => currentEffect; }
         public bool Started { get => started; }
         public bool Finished { get => finished; }
+
+        
+
+        public void Clear(ClearEffectRule forceRule = ClearEffectRule.Auto)
+        {
+            if (CurrentEffect == null)
+                return;
+
+            ClearEffectRule rule = forceRule != ClearEffectRule.Auto ? forceRule : CurrentEffect.ClearEffectRule;
+            if (rule == ClearEffectRule.Auto)
+                rule = ClearEffectRule.Nothing;
+
+            switch (rule)
+            {
+                case ClearEffectRule.Clear:
+                    durationTimer.Stop();
+                    break;
+                case ClearEffectRule.DamagePenalty:
+                    defense.DealDamage(
+                        Mathf.Floor(durationTimer.countdown * CurrentEffect.HitPerSeconds * CurrentEffect.DamagePerHit),
+                        CurrentEffect.DamageKind,
+                        PlayerHitKind.NoHit,
+                        0f,
+                        null,
+                        true);
+                    durationTimer.Stop();
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
 
         public virtual void StartEffect(Defense defense, Effect effect, MeshRenderer[] body = null)
         {
             started = true;
             this.defense = defense;
-
+            this.currentEffect = effect;
             /*
             if (body != null)
             {
@@ -44,8 +79,8 @@ namespace Assets.Scripts.Common
 
             }*/
 
-            durationTimer.Restart(effect.duration);
-            var effectParticules = effect.GetParticulesSystem();
+            durationTimer.Restart(effect.Duration);
+            var effectParticules = effect.GetParticules();
 
             if(effectParticules != null)
             {
@@ -72,6 +107,7 @@ namespace Assets.Scripts.Common
         {
             started = true;
             finished = true;
+            this.currentEffect = null;
 
             if (body != null)
             {
@@ -100,18 +136,18 @@ namespace Assets.Scripts.Common
 
 
 
-        private IEnumerator DealDamageTimes(Effect effect, HitKind hk = HitKind.NoHit)
+        private IEnumerator DealDamageTimes(Effect effect, PlayerHitKind hk = PlayerHitKind.NoHit)
         {
 
             Debug.Log("->");
-            if (effect.hitPerSeconds > 0f)
+            if (effect.HitPerSeconds > 0f)
             {
                 while (!durationTimer.Finished)
                 {
                     
-                    yield return new WaitForSeconds(1f / effect.hitPerSeconds);
+                    yield return new WaitForSeconds(1f / effect.HitPerSeconds);
                     Debug.Log("*");
-                    defense.DealDamage(effect.damagePerHit, effect.damageKind, hk, 0f, null, true);
+                    defense.DealDamage(effect.DamagePerHit, effect.DamageKind, hk, 0f, null, true);
                 }
             }
             StopEffect();

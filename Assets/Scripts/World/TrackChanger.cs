@@ -68,8 +68,8 @@ public class TrackChanger : MonoBehaviour
     private Track startTrack;
 
 
-    private GameObject endTrackObj, startTrackObj;
-    private BoxCollider endTrackBc, startTrackBc;
+    public GameObject endTrackObj, startTrackObj;
+    public BoxCollider endTrackBc, startTrackBc;
 
     [SerializeField]
     private Vector3 _size = Vector3.one;
@@ -172,11 +172,11 @@ public class TrackChanger : MonoBehaviour
             }
             
         }
-
+        /*
         if (endTrackObj == null) // Obtem ou cria os objetos
         {
 
-            var childEnd = gameObject.transform.Find(EndTrackObjName);
+            var childEnd = gameObject.FindChildByTag(EndTrackObjName);
 
             if(childEnd == null)
             {
@@ -194,10 +194,10 @@ public class TrackChanger : MonoBehaviour
 
             
 
-        }
+        }*//*
         if (startTrackObj == null && bidirectional)
         {
-            var childStart = gameObject.transform.Find(StartTrackObjName);
+            var childStart = gameObject.FindChildByTag(StartTrackObjName);
 
             if (childStart == null)
             {
@@ -218,7 +218,7 @@ public class TrackChanger : MonoBehaviour
             
            
 
-        }
+        }*/
 
 
     }

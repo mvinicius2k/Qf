@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_8;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;RealtimeCSG;RealtimeCSG_1;RealtimeCSG_1_5;RealtimeCSG_1_5_62;CROSS_PLATFORM_INPUT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_8;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_LINUX;UNITY_STANDALONE_LINUX;UNITY_STANDALONE;UNITY_STANDALONE_LINUX_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;ENABLE_MODULAR_UNITYENGINE_ASSEMBLIES;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;RealtimeCSG;RealtimeCSG_1;RealtimeCSG_1_5;RealtimeCSG_1_5_62;CROSS_PLATFORM_INPUT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -49,16 +49,18 @@
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.7</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityBuildTarget>StandaloneLinux64:24</UnityBuildTarget>
     <UnityVersion>2020.3.8f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Templates\IInitializable.cs" />
+    <Compile Include="Assets\Scripts\World\Fear1.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIMail.cs" />
     <Compile Include="Assets\Imported\Ciconia Studio\_Shared Files\Scripts\Demo\UIButton_ShowNext.cs" />
     <Compile Include="Assets\Scripts\Utils\Helpers.cs" />
+    <Compile Include="Assets\Scripts\World\AudioTrack.cs" />
     <Compile Include="Assets\Scripts\Entities\ElectricEffect.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
@@ -66,56 +68,101 @@
     <Compile Include="Assets\Scripts\Common\Slope.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\Preset.cs" />
     <Compile Include="Assets\Scripts\Entities\Player.cs" />
+    <Compile Include="Assets\Scripts\Entities\CryWolfAnimation.cs" />
     <Compile Include="Assets\Scripts\UI\HUD.cs" />
+    <Compile Include="Assets\Scripts\Entities\CryWolf.cs" />
+    <Compile Include="Assets\Scripts\UI\GUITalk.cs" />
+    <Compile Include="Assets\Scripts\Res\StringResourceNode.cs" />
+    <Compile Include="Assets\Save.cs" />
     <Compile Include="Assets\Scripts\Common\EffectSlot.cs" />
+    <Compile Include="Assets\Scripts\Res\Id.cs" />
     <Compile Include="Assets\Scripts\Entities\Effect.cs" />
-    <Compile Include="Assets\Scripts\Entities\PlayerContextAction.cs" />
-    <Compile Include="Assets\Scripts\Common\HitKind.cs" />
+    <Compile Include="Assets\Scripts\World\HighlightPickable.cs" />
+    <Compile Include="Assets\Scripts\UI\IGUIDisposable.cs" />
+    <Compile Include="Assets\Scripts\Common\PlayerHitKind.cs" />
+    <Compile Include="Assets\Scripts\World\Mail.cs" />
+    <Compile Include="Assets\Imported\Real-Time Procedural Cable Simple\Scripts\CableProceduralCurve.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
+    <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
+    <Compile Include="Assets\Scripts\World\Soundtrack.cs" />
+    <Compile Include="Assets\Imported\Real-Time Procedural Cable Simple\Scripts\CableProceduralMultipoint.cs" />
     <Compile Include="Assets\Scripts\Entities\Attack.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\Scripts\Common\TrackChangerState.cs" />
     <Compile Include="Assets\Scripts\Entities\IAttackable.cs" />
+    <Compile Include="Assets\Imported\Real-Time Procedural Cable Simple\Scripts\CableProceduralStatic.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Scripts\World\ActionTriggerEditor.cs" />
+    <Compile Include="Assets\StartBattle.cs" />
+    <Compile Include="Assets\Scripts\UI\CMCameraController.cs" />
     <Compile Include="Assets\Scripts\Entities\DamageKind.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\ComponentExtensions.cs" />
+    <Compile Include="Assets\Scripts\World\Talk.cs" />
+    <Compile Include="Assets\Scripts\Entities\Entity.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
+    <Compile Include="Assets\Scripts\Entities\MovementBase.cs" />
+    <Compile Include="Assets\Scripts\Utils\Vision.cs" />
     <Compile Include="Assets\Scripts\World\TrackChanger.cs" />
     <Compile Include="Assets\Scripts\World\IContextAction.cs" />
-    <Compile Include="Assets\Scripts\World\OpenGateDoor.cs" />
+    <Compile Include="Assets\Scripts\World\FirstApparenceCryWolf.cs" />
+    <Compile Include="Assets\Scripts\World\GateDoor.cs" />
+    <Compile Include="Assets\Scripts\Entities\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Entities\IEffect.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIBase.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
+    <Compile Include="Assets\Scripts\Res\StringsResourceEditor.cs" />
     <Compile Include="Assets\Scripts\Common\Direction2D.cs" />
     <Compile Include="Assets\Scripts\Entities\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\IPreset.cs" />
+    <Compile Include="Assets\Scripts\World\SwitchButton.cs" />
     <Compile Include="Assets\Scripts\Utils\ObjectsManager.cs" />
+    <Compile Include="Assets\Scripts\Common\IEffectable.cs" />
+    <Compile Include="Assets\Scripts\Common\TextMotion.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIIndtro.cs" />
+    <Compile Include="Assets\Scripts\Entities\WeaponSlot.cs" />
+    <Compile Include="Assets\Scripts\World\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Utils\Global.cs" />
     <Compile Include="Assets\Scripts\Utils\CustomGizmos.cs" />
     <Compile Include="Assets\Scripts\Entities\Defense.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\Common\Mantle.cs" />
-    <Compile Include="Assets\Scripts\World\ActionTrigger.cs" />
+    <Compile Include="Assets\Scripts\Entities\CryWolfCombat.cs" />
+    <Compile Include="Assets\Scripts\Entities\CryWolfStats.cs" />
+    <Compile Include="Assets\Scripts\Common\TalkParagraph.cs" />
+    <Compile Include="Assets\Scripts\Entities\ClearEffectRule.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
+    <Compile Include="Assets\Scripts\Entities\GUIStats.cs" />
+    <Compile Include="Assets\Scripts\Res\StringResourceEditor.cs" />
+    <Compile Include="Assets\GUIActionContext.cs" />
     <Compile Include="Assets\Imported\Ciconia Studio\_Shared Files\Scripts\Demo\FreeCam.cs" />
+    <Compile Include="Assets\Scripts\UI\FadeStats.cs" />
     <Compile Include="Assets\Imported\Ciconia Studio\_Shared Files\Scripts\Demo\SuperCamera.cs" />
+    <Compile Include="Assets\Imported\Real-Time Procedural Cable Simple\Scripts\CableProceduralSimple.cs" />
     <Compile Include="Assets\Scripts\Entities\PlayerMovementController.cs" />
+    <Compile Include="Assets\Scripts\Res\StringResource.cs" />
+    <Compile Include="Assets\Scripts\Entities\PlasmaGun.cs" />
     <Compile Include="Assets\Scripts\Entities\PlayerCombatController.cs" />
-    <Compile Include="Assets\Scripts\Templates\MonoScript.cs" />
     <Compile Include="Assets\Imported\IgniteCoders\Simple Water Shader\Resources\WaterReflection.cs" />
-    <Compile Include="Assets\Scripts\Templates\IMonoScript.cs" />
+    <Compile Include="Assets\Scripts\Entities\Weapon.cs" />
+    <Compile Include="Assets\Scripts\World\ActionTrigger.cs" />
     <Compile Include="Assets\Scripts\Common\Constants.cs" />
+    <Compile Include="Assets\Scripts\World\SoundtrackScripts.cs" />
     <Compile Include="Assets\Scripts\Utils\ObjectsManagerEditor.cs" />
-    <Compile Include="Assets\Scripts\Templates\MonoScriptEditor.cs" />
+    <Compile Include="Assets\Scripts\Res\StringsResource.cs" />
+    <Compile Include="Assets\Scripts\Common\LifeState.cs" />
     <Compile Include="Assets\Scripts\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\Common\WeaponKind.cs" />
     <Compile Include="Assets\Imported\Ciconia Studio\_Shared Files\Scripts\Demo\FreeCamera.cs" />
     <Compile Include="Assets\Scripts\Entities\PlayerMovementEditor.cs" />
-    <Compile Include="Assets\Scripts\Entities\ContextAction.cs" />
+    <Compile Include="Assets\Scripts\Entities\CryWolfMovement.cs" />
+    <Compile Include="Assets\Scripts\Entities\PlayerContextAction.cs" />
     <Compile Include="Assets\Scripts\World\Track.cs" />
-    <Compile Include="Assets\Scripts\Common\IEffectable.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIBlackScreen.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Imported\Real-Time Procedural Cable Simple\ReadmeSimpleCable.txt" />
      <None Include="Assets\Imported\Ciconia Studio\Shaders\Standard Shaders\BuiltIn\CS_Standard (Specular setup) Opaque.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -127,13 +174,17 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\Imported\Real-Time Procedural Cable Simple\ReadmeStaticCable.txt" />
      <None Include="Assets\Imported\Ciconia Studio\Shaders\Standard Shaders\BuiltIn\CS_Standard (Specular setup) Transparent.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\Imported\Real-Time Procedural Cable Simple\ReadmeCurveCable.txt" />
      <None Include="Assets\Imported\Ciconia Studio\Shaders\Standard Shaders\BuiltIn\CS_Lite Standard (Specular setup) Transparent.shader" />
      <None Include="Assets\Imported\Ciconia Studio\Shaders\Standard Shaders\Readme.txt" />
+     <None Include="Assets\Imported\Real-Time Procedural Cable Simple\ReadmeMultiPointCable.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Imported\LeversAndSwitches\LICENSE.txt" />
      <None Include="Assets\Skyboxes\SkySerie Freebie\Hdri setup.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\Imported\Ciconia Studio\Shaders\Standard Shaders\BuiltIn\CS_Lite Standard (Specular setup) Opaque.shader" />
@@ -149,9 +200,6 @@
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ARModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AccessibilityModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
@@ -803,6 +851,10 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{AA4A873C-1586-EC49-8DEB-49DF54526A6C}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="UltEvents.csproj">
+      <Project>{C0B4BDF9-10E3-ECB6-DAB5-E8E074F7995C}</Project>
+      <Name>UltEvents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

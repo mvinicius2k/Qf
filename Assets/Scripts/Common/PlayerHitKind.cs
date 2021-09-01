@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Common
 {
-    public enum HitKind
+    public enum PlayerHitKind
     {
         /// <summary>
         /// Sem hit

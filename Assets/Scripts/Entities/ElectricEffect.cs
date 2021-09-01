@@ -10,16 +10,16 @@ namespace Assets.Scripts.Entities
 {
     public class ElectricEffect : Effect
     {
-        public ParticleSystem particleSystem;
+        public ParticleSystem particules;
 
         public ElectricEffect()
         {
 
         }
 
-        public override ParticleSystem GetParticulesSystem()
+        public override ParticleSystem GetParticules()
         {
-            return particleSystem;
+            return particules;
         }
     }
 }

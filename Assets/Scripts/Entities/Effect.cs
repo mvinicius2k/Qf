@@ -13,18 +13,32 @@ namespace Assets.Scripts.Entities
     public abstract class Effect : MonoBehaviour, IEffect
     {
 
-        public float damagePerHit, hitPerSeconds;
-        public DamageKind damageKind;
-        public Material effectMaterial;
-        public float duration;
+        [SerializeField]
+        private float damagePerHit, hitPerSeconds;
+        [SerializeField]
+        private DamageKind damageKind = DamageKind.None;
+        [SerializeField]
+        private Material effectMaterial;
+        [SerializeField]
+        private float duration;
+        [SerializeField]
+        private ClearEffectRule clearEffectRule = ClearEffectRule.DamagePenalty;
 
-        
-        
+        public float DamagePerHit { get => damagePerHit;}
+        public float HitPerSeconds { get => hitPerSeconds;}
+        public DamageKind DamageKind { get => damageKind;}
+        public Material EffectMaterial { get => effectMaterial; }
+        public float Duration { get => duration; }
+        public ClearEffectRule ClearEffectRule { get => clearEffectRule; }
+
         public float GetDamagePerSecond()
         {
             return damagePerHit * hitPerSeconds;
+            
         }
 
-        public abstract ParticleSystem GetParticulesSystem();
+        
+
+        public abstract ParticleSystem GetParticules();
     }
 }
