@@ -1,26 +1,61 @@
-# Ignore everything:
-*.*
+.vs
+.plastic
 Library
+library
+Temp
+temp
+Obj
 obj
-
-!Assets/Scripts/**/*.cs
-!Assets/Scenes/**/*.*
-!*.cs
-!*.csproj
-!*.sln
-!.gitignore
-
-
-/Assets/Plugins/RealtimeCSG
-/Temp
-/Assets/Imported/Ciconia Studio/_Shared Files/Scripts/Demo
-/Assets/Standard Assets
-/Assets/SampleScenes
-/Assets/IgniteCoders/Simple Water Shader/Resources
-/Assets/Imported/IgniteCoders/Simple Water Shader/Resources
-/Assets/Scenes/Venus
-/Assets/Scripts/RuntimePresets
-/Assets/Scenes/SampleScene
-/Assets/Imported/AssetStoreOriginals/_SNAPS_PrototypingAssets/Scripts/Editor/PackageChecker
-/Assets/Imported/Real-Time Procedural Cable Simple/Scripts
-/Assets/Plugins/UltEvents
+Build
+build
+Builds
+builds
+UserSettings
+usersettings
+MemoryCaptures
+memorycaptures
+Logs
+logs
+/ignore.conf
+*.private
+*.private.meta
+^*.private.[0-9]+$
+^*.private.[0-9]+.meta$
+**/Assets/AssetStoreTools
+**/assets/assetstoretools
+/Assets/Plugins/PlasticSCM*
+/assets/plugins/PlasticSCM*
+.gradle
+ExportedObj
+.consulo
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.apk
+*.unitypackage
+.collabignore
+crashlytics-build.properties
+**/Assets/AddressableAssetsData/*/*.bin*
+**/assets/addressableassetsdata/*/*.bin*
+**/Assets/StreamingAssets/aa.meta
+**/assets/streamingassets/*/aa/*
+.DS_Store*
+Thumbs.db
+Desktop.ini
+Assets/CastVisualizer
+Assets/NaughtyAttributes
+Assets/Rotary Heart
+Assets/Plugins

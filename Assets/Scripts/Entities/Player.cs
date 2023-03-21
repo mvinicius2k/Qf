@@ -1,3 +1,4 @@
+using Assets.Scripts.Common;
 using Assets.Scripts.Entities;
 using Assets.Scripts.UI;
 using Assets.Scripts.Utils;
@@ -19,6 +20,12 @@ public class Player : MonoBehaviour
     //public Global global;
     public GUIBlackScreen GUIBlackScreen;
     public WeaponSlot weaponSlot;
+    private bool characterHided = false;
+
+    private readonly List<Renderer> modelRendersCache = new List<Renderer>();
+
+    
+
 
     bool deading;
 
@@ -106,12 +113,32 @@ public class Player : MonoBehaviour
         playerMovementController.stopConstrols = false;
     }
 
+    private void Start()
+    {
+        if (modelRendersCache.Count == 0)
+            modelRendersCache.AddRange(playerModel.GetComponentsInChildren<Renderer>());
+    }
+
     public void Update()
     {
         if (playerStats.IsDead)
         {
 
             Respawn(3f);
+            
+
+        }
+
+        if (Input.GetButtonUp(Constants.InputHideCharacter))
+        {
+            var boolValue = characterHided;
+            characterHided = !characterHided;
+
+            foreach(var m in modelRendersCache)
+            {
+                m.enabled = boolValue;
+            }
+
             
 
         }

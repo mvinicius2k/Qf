@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &9178288824105953989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1324385624613253763, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_Name
+      value: Dirty Carbon Floor S Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -44.146553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.3001168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813535689867044921, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949128231910565253, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949128231910565253, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949128231910565253, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32c524f702b0d224f8d55e4a82600761, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b086afbec19ff5943bfba2db5a035ce6, type: 3}

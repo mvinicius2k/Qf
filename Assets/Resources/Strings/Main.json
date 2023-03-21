@@ -1,0 +1,37 @@
+[
+    
+    {
+        "key": "Global",
+        "childs": [ {} ]
+    },
+    {
+        "key": "Venus",
+        "childs": [
+            {
+                "key": "xzers-in-work-room-to",
+                "value": "Para"
+            },
+            {
+                "key": "xzers-in-work-room-who",
+                "value": "null"
+            },
+            {
+                "key": "xzers-in-work-room-date",
+                "value": "42/-15/14010 -450:20"
+            },
+            {
+                "key": "xzers-in-work-room-title",
+                "value": "Oi filho, é a mamãe"
+            },
+            {
+                "key": "xzers-in-work-room-text",
+                "value": "Estou tentanto há horas falar com vocês. Estão dizendo que vocês perderam as comunicações de novo. Nos deram esses dispositivos para se comunicarmos com vocês, que bom que se importam com a gente. Quero que saiba que a mamãe ama vocês. Tentei contato com seu irmão mais cedo, diga a ele que a mamãe o ama. Estamos esperando vocês."
+            },
+            {
+                "key": "xzers-in-work-room-status",
+                "value": "Não foi possível enviar a mensagem, tente novamente."
+            }
+        ]
+    }
+
+]

@@ -44,6 +44,7 @@ namespace Assets.Scripts.Common
 
         public const string InputContextAction = "Context Action";
         public const string InputFire1 = "Fire1";
+        public const string InputHideCharacter = "Hide Character";
 
         public const int CountGroundHitKind = 6;
     }
